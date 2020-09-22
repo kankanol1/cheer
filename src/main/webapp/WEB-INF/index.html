@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+</head>
+<body>
+1341212
+<script>
+
+wx.ready(function(){
+    $.ajax({
+        url :"https://eway.kankan.fun"+"/wx/jsapi/aa",
+        type : 'post',
+        dataType : 'json',
+        contentType : "application/x-www-form-urlencoded; charset=utf-8",
+        data : {
+            'url' : location.href.split('#')[0]
+        },
+        success : function(data) {
+            console.log(data);
+            wx.config({
+                debug : true,
+                appId : data.appId,
+                timestamp :data.timestamp,
+                nonceStr : data.nonceStr,
+                signature : data.signature,
+                jsApiList : [ 'checkJsApi', 'onMenuShareTimeline',
+                    'onMenuShareAppMessage', 'onMenuShareQQ',
+                    'onMenuShareWeibo', 'hideMenuItems',
+                    'showMenuItems', 'hideAllNonBaseMenuItem',
+                    'showAllNonBaseMenuItem', 'translateVoice',
+                    'startRecord', 'stopRecord', 'onRecordEnd',
+                    'playVoice', 'pauseVoice', 'stopVoice',
+                    'uploadVoice', 'downloadVoice', 'chooseImage',
+                    'previewImage', 'uploadImage', 'downloadImage',
+                    'getNetworkType', 'openLocation', 'getLocation',
+                    'hideOptionMenu', 'showOptionMenu', 'closeWindow',
+                    'scanQRCode', 'chooseWXPay',
+                    'openProductSpecificView', 'addCard', 'chooseCard',
+                    'openCard','updateAppMessageShareData','updateTimelineShareData' ]
+            });
+        }
+    });
+
+})
+
+
+
+</script>
+</body>
+</html>

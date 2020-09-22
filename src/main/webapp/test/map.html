@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../static/jquery/jquery-1.8.3.js"></script>
+</head>
+<body>
+<script>
+    var data={
+        location:"39.984154,116.307490",
+        /*换成自己申请的key*/
+        key:"SJ2BZ-NLICP-FZJDP-LA2F3-E5TBV-JUFOU",
+        get_poi:0
+    }
+    var url="http://apis.map.qq.com/ws/geocoder/v1/?";
+    data.output="jsonp";
+    $.ajax({
+        type:"get",
+        dataType:'jsonp',
+        data:data,
+        jsonp:"callback",
+        jsonpCallback:"QQmap",
+        url:url,
+        success:function(json){
+            /*json对象转为文本 var aToStr=JSON.stringify(a);*/
+            var toStr = JSON.stringify(json);
+            // toStr=getFormatJsonStrFromString(toStr);
+            console.log(JSON.parse(toStr));
+            /*调用业务处理程序*/
+            // suggestion_example&&suggestion_example($show,url_list,toStr);
+        },
+        error : function(err){alert("服务端错误，请刷新浏览器后重试")}
+
+    });
+
+</script>
+</body>
+</html>
