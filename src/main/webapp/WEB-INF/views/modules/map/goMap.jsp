@@ -58,9 +58,7 @@
 
 <script type="text/javascript">
     function getEcharts(ref) {
-        console.log(ref)
-        var data = ref[0]
-        var top = ref[1]
+
         var allLocat = {
             '山东省': [117.000923, 36.675807],
             '河北省': [115.48333, 38.03333],
@@ -93,14 +91,29 @@
             '上海市': [121.55333, 31.20000],
             '重庆市': [106.45000, 29.56667],
             '北京市': [116.41667, 39.91667],
-            '台湾省': [121.30, 25.03],
-            '香港特别行政区': [114.10000, 22.20000],
-            '澳门特别行政区': [113.50000, 22.20000]
+            //'台湾省': [121.30, 25.03],
+            //'香港特别行政区': [114.10000, 22.20000],
+            //'澳门特别行政区': [113.50000, 22.20000]
         }
+        var top = ref[1];
+
+        var s = Object.keys(allLocat).map((i,j)=>{
+            var num =Math.round(Math.random()*50);
+            for(var k=0;k<top.length;k++){
+            var a = allLocat[i];
+            var b=[117.1307373046875,36.62875385775956];
+            var c = Math.sqrt(Math.pow(b[0]-a[0],2)+Math.pow(b[1]-a[1],2));
+              if(top[k].link==i) num =num+Math.round(Math.random()*300/(c+1));
+            }
+            return {counts: num, link: i}
+        })
+        top = s;
+        var data = ref[0]
         var quan1 = []
         var quan = []
         var jiantou = []
         var top_quan = []
+
 
         for (var i = 0; i < data.length; i++) {
             allLocat[data[i].id] = [data[i].lng, data[i].lat]
@@ -227,6 +240,9 @@
                                 symbol: 'image://${ctxStatic}/images/xxlogon.png',
                                 symbolSize: function (v) {  //光电大小
                                     return [28.8, 20.7]
+                                },
+                                label:{
+                                fontSize: 24,
                                 },
                                 effect: {
                                     show: true,

@@ -51,7 +51,7 @@
     </c:choose>
   </div>
 </div>
-<div style="position:absolute;width: 100%;text-align:center;bottom: 18%;font-size:18px"><a style="color:blue" href="http://www.sdcmc.net/">助力详情登陆学院校庆官方网站查看</a></div>
+<div style="position:absolute;width: 100%;text-align:center;bottom: 18%;font-size:18px"><a style="color:blue" href="http://xq.sdcmc.net/">助力详情登陆学院校庆官方网站查看</a></div>
 
 <div style="position: absolute;bottom: 5%;width: 100%;text-align: center">
   <img src="${ctxStatic}/images/xxlogo.png" style="width: 50px"/>

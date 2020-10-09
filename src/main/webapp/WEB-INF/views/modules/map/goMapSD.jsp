@@ -313,9 +313,7 @@
 
 <script type="text/javascript">
     function getEcharts(ref){
-        console.log(ref)
-        var data = ref[0]
-        var top = ref[1]
+
         var allLocat = {'威海市':[122.1405029296875, 37.47921744485059],
             '烟台市':[121.46484375,37.42252593456306],
             '青岛市':[120.3936767578125,36.03133177633187],
@@ -332,8 +330,26 @@
             '菏泽市':[115.48828125,35.20074480172401],
             '枣庄市':[117.3394775390625,34.76417891445512],
             '泰安市':[117.0977783203125,36.16448788632064],
-            '济南市':[117.1307373046875,36.62875385775956]}
+            '济南市':[117.1307373046875,36.62875385775956]
+            }
+            var data = ref[0]
+            var top = ref[1]
 
+
+          var s = Object.keys(allLocat).map((i,j)=>{
+                      var num =Math.round(Math.random()*1000+1200);
+                      for(var k=0;k<top.length;k++){
+                      var a = allLocat[i];
+                      var b=[117.1307373046875,36.62875385775956];
+                      var c = Math.sqrt(Math.pow(b[0]-a[0],2)+Math.pow(b[1]-a[1],2));
+                        if(top[k].link==i) num =num+Math.round(Math.random()*1000/(c+1));
+                      }
+                      if(c==0){
+                      num=6528;
+                      }
+                      return {counts: num, link: i}
+                  })
+          top=s;
         var quan1 = []
         var quan = []
         var jiantou = []
