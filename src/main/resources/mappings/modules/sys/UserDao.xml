@@ -420,6 +420,15 @@
 		<if test="type!=null and type!=''">
 			and province = "山东省"
 		</if>
+		LIMIT 10
+	</select>
+	<select id="findAllCheerDatas" resultType="Map">
+		select u.name as name, a.id as id,a.lat as lat,a.lng as lng ,a.cheer as cheer,a.jl as jl,a.area as area from
+		sys_user_exp a left join sys_user u on a.id = u.id where nation = '中国'
+		<if test="type!=null and type!=''">
+			and province = "山东省"
+		</if>
+
 	</select>
 
 	<select id="findTopCheerData" resultType="Map">
@@ -448,11 +457,12 @@
 	having link is not null
 
 	order by counts DESC
-		LIMIT 10
+		LIMIT 30
 	</select>
 
 	<select id="findCheerList" resultType="com.thinkgem.jeesite.modules.sys.entity.UserExp">
-		select *from sys_user_exp where address is not null limit 100
+<!--		select *from sys_user_exp where address is not null limit 100-->
+		select *from sys_user_exp
 	</select>
 	<select id="getCount" resultType="Integer">
 		select count(id) from sys_user_exp

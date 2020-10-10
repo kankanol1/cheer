@@ -25,7 +25,7 @@
   </style>
 </head>
 <body style="overflow: hidden">
-<div class="title-style"><p>助威人数：<span id="num">4232</span></p></div>
+<div class="title-style"><p>助威人数：<span id="num">0</span></p></div>
 
 <div class="jq22-content" style="position: absolute;z-index: -1">
   <div id='holder'></div>
@@ -51,7 +51,7 @@
     </c:choose>
   </div>
 </div>
-<div style="position:absolute;width: 100%;text-align:center;bottom: 18%;font-size:18px"><a style="color:blue" href="http://www.sdcmc.net/">助力详情登陆学院校庆官方网站查看</a></div>
+<div style="position:absolute;width: 100%;text-align:center;bottom: 18%;font-size:18px"><a style="color:blue" href="http://xq.sdcmc.net/">助力详情登陆学院校庆官方网站查看</a></div>
 
 <div style="position: absolute;bottom: 5%;width: 100%;text-align: center">
   <img src="${ctxStatic}/images/xxlogo.png" style="width: 50px"/>
@@ -61,6 +61,7 @@
 <script>
   var nums = 0;
   $(document).ready(function () {
+   getNum();
     hy.jssdk();
     var warpdrive = new WarpDrive(document.getElementById('holder'));
   });
@@ -69,7 +70,7 @@
     $.alert("地图已点亮，感谢您的助威");
   }
 
-  getNum();
+
 
   function getNum() {
     $.ajax({
@@ -390,7 +391,22 @@
       data: {},
       success: function (ref) {
         if (ref.ok == "ok") {
-          data[0] = ref.dataList
+var lists = ref.dataList;
+        if(ref.user.id && ref.user.exp && ref.user.exp.id){
+        var s = {
+        area: "area",
+        cheer: "",
+        id: ref.user.exp.id,
+        jl: "11",
+        lat: ref.user.exp.lat,
+        lng: ref.user.exp.lng,
+        name: ref.user.name,
+        };
+        lists.push(s);
+        }
+
+
+          data[0] = lists
           data[1] = ref.user
         }
       }

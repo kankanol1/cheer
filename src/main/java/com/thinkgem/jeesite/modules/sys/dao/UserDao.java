@@ -100,6 +100,7 @@ public interface UserDao extends CrudDao<User> {
     void saveExp(UserExp exp);
 
     List<Map<String, Object>> findAllCheerData(@Param("type")String type);
+    List<Map<String, Object>> findAllCheerDatas(@Param("type")String type);
 
     List<UserExp> findCheerList();
 
