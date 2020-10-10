@@ -390,7 +390,20 @@
       data: {},
       success: function (ref) {
         if (ref.ok == "ok") {
-          data[0] = ref.dataList
+        var lists = ref.dataList
+        if(ref.user.id && ref.user.exp && ref.user.exp.id){
+        var aa ={
+        area: "area",
+        cheer: "",
+        id: ref.user.id,
+        jl: "27",
+        lat: ref.user.exp.lat,
+        lng: ref.user.exp.lng,
+        name: ref.user.name,
+        };
+        lists.push(aa);
+        }
+          data[0] = lists
           data[1] = ref.user
         }
       }
